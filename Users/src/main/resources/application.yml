@@ -1,0 +1,15 @@
+server:  port: 8083
+
+
+
+
+spring:
+  application:
+    name: User-Service
+ 
+  
+#Spring data mongodb
+  data:
+    mongodb:
+      uri: mongodb+srv://Test_Admin:Test_pass@first-cluster.phl9p.mongodb.net/test
+      database: FlightBookingSystem
