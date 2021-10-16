@@ -12,4 +12,7 @@ public interface FlightsRepository extends MongoRepository<FlightsData, Integer>
 	@Query("{source:?0,destination:?1}")
 	public FlightsData findFlightBySource(String source, String destination);
 
+	@Query("{flightId:?0}")
+	public FlightsData findFlightById(int flightId);
+
 }

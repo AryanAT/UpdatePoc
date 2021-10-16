@@ -11,18 +11,21 @@ public class UsersModel {
 	private String userLastName;
 	private String userPassword;
 	private int bookingId;
+	private String email;
 
 	public UsersModel() {
 		super();
 	}
 
-	public UsersModel(int userId, String userFirstName, String userLastName, String userPassword, int bookingId) {
+	public UsersModel(int userId, String userFirstName, String userLastName, String userPassword, int bookingId,
+			String email) {
 		super();
 		this.userId = userId;
 		this.userFirstName = userFirstName;
 		this.userLastName = userLastName;
 		this.userPassword = userPassword;
 		this.bookingId = bookingId;
+		this.email = email;
 	}
 
 	public int getUserId() {
@@ -63,6 +66,14 @@ public class UsersModel {
 
 	public void setBookingId(int bookingId) {
 		this.bookingId = bookingId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

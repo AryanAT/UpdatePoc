@@ -1,4 +1,4 @@
-package com.flightBookingSystem.admin.models;
+package com.flightBookingSystem.bookings.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,23 +9,23 @@ public class UsersModel {
 	private int userId;
 	private String userFirstName;
 	private String userLastName;
-	private String email;
-	private int bookingId;
 	private String userPassword;
+	private int bookingId;
+	private String email;
 
 	public UsersModel() {
+		super();
 	}
 
-	public UsersModel(int userId, String userFirstName, String userLastName, String email, int bookingId,
-			String userPassword) {
-
+	public UsersModel(int userId, String userFirstName, String userLastName, String userPassword, int bookingId,
+			String email) {
+		super();
 		this.userId = userId;
 		this.userFirstName = userFirstName;
 		this.userLastName = userLastName;
+		this.userPassword = userPassword;
 		this.bookingId = bookingId;
-		this.email = email;
-		this.setUserPassword(userPassword);
-
+		this.setEmail(email);
 	}
 
 	public int getUserId() {
@@ -52,6 +52,14 @@ public class UsersModel {
 		this.userLastName = userLastName;
 	}
 
+	public String getUserPassword() {
+		return userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+
 	public int getBookingId() {
 		return bookingId;
 	}
@@ -66,10 +74,6 @@ public class UsersModel {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
 	}
 
 }

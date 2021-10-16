@@ -27,7 +27,12 @@ public class AdminServiceImpl implements AdminServiceInterface {
 
 	@Override
 	public void addAdmin(@RequestBody AdminModel admin) {
-		adminRepository.save(admin);
+		AdminModel admin1 = adminRepository.getAdminById((admin.getAdminId()));
+		if (admin1 == null) {
+			adminRepository.save(admin);
+		} else {
+			System.out.println("Admin already exists with this Id");
+		}
 	}
 
 	@Override
@@ -37,19 +42,34 @@ public class AdminServiceImpl implements AdminServiceInterface {
 
 	@Override
 	public void delUser(int userId) {
-		userRepository.deleteById(userId);
+		UsersModel user = userRepository.getUserById(userId);
+		if (user != null) {
+			userRepository.deleteById(userId);
+		} else {
+			System.out.println("Can't Delete User that doesn't exists");
+		}
 
 	}
 
 	@Override
 	public void addFlight(@RequestBody FlightsData flightData) {
-		flightsRepository.save(flightData);
+		FlightsData flight = flightsRepository.findFlightById(flightData.getFlightId());
+		if (flight == null) {
+			flightsRepository.save(flightData);
+		} else {
+			System.out.println("Flight Already Exists with this Id");
+		}
 
 	}
 
 	@Override
 	public void removeFlight(int flightId) {
-		flightsRepository.deleteById(flightId);
+		FlightsData flight = flightsRepository.findFlightById(flightId);
+		if (flight != null) {
+			flightsRepository.deleteById(flightId);
+		} else {
+			System.out.println("Can't Delete Flight that doesn't exists");
+		}
 	}
 
 	@Override
@@ -64,9 +84,14 @@ public class AdminServiceImpl implements AdminServiceInterface {
 
 	@Override
 	public void updateUser(int userId, String firstName) {
-		UsersModel user = getUserById(userId);
-		user.setUserFirstName(firstName);
-		userRepository.save(user);
+		UsersModel user = userRepository.getUserById(userId);
+		if (user != null) {
+			UsersModel user1 = getUserById(userId);
+			user1.setUserFirstName(firstName);
+			userRepository.save(user1);
+		} else {
+			System.out.println("Can't Update User that doesn't exists");
+		}
 
 	}
 

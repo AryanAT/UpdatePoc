@@ -11,7 +11,7 @@ import com.flightBookingSystem.Users.models.FlightsData;
 @Repository
 public interface FlightsRepository extends MongoRepository<FlightsData, Integer> {
 
-	@Query("{source:?0,destination:?1}")
-	public List<FlightsData> findFlightBySourceAndDestination(String source, String destination);
+	@Query("{source:?0,destination:?1,date:?2}")
+	public List<FlightsData> findFlightBySourceAndDestination(String source, String destination, String date);
 
 }

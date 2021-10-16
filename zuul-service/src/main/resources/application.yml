@@ -1,0 +1,34 @@
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api-gateway
+  routes:
+    Users:
+      path: /Users/**
+      url: http://localhost:8083
+    flights:
+      path: /flights/**
+      url: http://localhost:8082
+    admin:
+      path: /admin/**
+      url: http://localhost:8084
+    booking:
+      path: /bookings/**
+      url: http://localhost:8089
+
+    
+server:
+  port: 8809
+
+spring:  application:    name: zuul-service
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetchRegistry: true
+    registerWithEureka: false
+  instance:
+    hostname: localhost
+
+
+

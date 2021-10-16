@@ -1,11 +1,7 @@
 package com.flightBookingSystem.flights.models;
 
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Document(collection = "FlightsData")
 
@@ -16,20 +12,22 @@ public class FlightsData {
 	private String source;
 	private String destination;
 	private int fare;
-	private Date date;
+	private String date;
+	private String time;
 
-	public FlightsData(int flightId, String airlineName, String source, String destination, int fare, Date date) {
-		
+	public FlightsData(int flightId, String airlineName, String source, String destination, int fare, String date,
+			String time) {
+
 		this.flightId = flightId;
 		this.airlineName = airlineName;
 		this.source = source;
 		this.destination = destination;
 		this.fare = fare;
 		this.date = date;
+		this.time = time;
 	}
 
 	public FlightsData() {
-		
 
 	}
 
@@ -65,11 +63,11 @@ public class FlightsData {
 		this.destination = destination;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -79,6 +77,14 @@ public class FlightsData {
 
 	public void setFare(int fare) {
 		this.fare = fare;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 }

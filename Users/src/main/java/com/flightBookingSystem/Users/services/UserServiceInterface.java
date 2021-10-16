@@ -9,9 +9,7 @@ import com.flightBookingSystem.Users.models.UsersModel;
 public interface UserServiceInterface {
 	UsersModel register(UsersModel user);
 
-	List<FlightsData> Search(String source, String destination);
-
-	String booking(int userId, int flightId);
+	List<FlightsData> Search(String source, String destination, String date);
 
 	ResponseTemplateVo getUserWithBookingId(int userId);
 

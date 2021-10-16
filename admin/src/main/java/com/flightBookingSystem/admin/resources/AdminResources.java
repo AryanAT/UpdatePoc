@@ -26,7 +26,7 @@ public class AdminResources {
 	@PostMapping("/addAdmin")
 	public String addAdmin(@RequestBody AdminModel admin) {
 		adminServiceInterface.addAdmin(admin);
-		return "Added admin";
+		return "If adminId was unique admin Added, Check Console for Confirmation";
 	}
 
 	@GetMapping("getAdmin/{adminId}")

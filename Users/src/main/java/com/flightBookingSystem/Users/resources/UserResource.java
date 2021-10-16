@@ -30,16 +30,10 @@ public class UserResource {
 		return userServiceInterface.register(user);
 	}
 
-//	@GetMapping("/{userId}/book/{flightId}")
-//	public String bookings(@PathVariable("userId") int userId, @PathVariable("flightId") int flightId) {
-//		return userServiceInterface.booking(userId, flightId);
-//
-//	}
-
-	@GetMapping("/search/{source}+{destination}")
+	@GetMapping("/search/{source}+{destination}+{date}")
 	public List<FlightsData> search(@PathVariable("source") String Source,
-			@PathVariable("destination") String destination) {
-		return userServiceInterface.Search(Source, destination);
+			@PathVariable("destination") String destination, @PathVariable("date") String date) {
+		return userServiceInterface.Search(Source, destination, date);
 
 	}
 

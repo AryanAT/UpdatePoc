@@ -27,21 +27,26 @@ public class UserServiceImpl implements UserServiceInterface {
 
 	@Override
 	public UsersModel register(UsersModel user) {
-
-		return userRepository.insert(user);
+		try {
+			return userRepository.insert(user);
+		} catch (org.springframework.dao.DuplicateKeyException e) {
+			System.out.println("Duplicate Id");
+			e.printStackTrace();
+			return null;
+		}
 
 	}
 
 	@Override
-	public List<FlightsData> Search(String source, String destination) {
-		return flightsRepository.findFlightBySourceAndDestination(source, destination);
+	public List<FlightsData> Search(String source, String destination, String date) {
+		return flightsRepository.findFlightBySourceAndDestination(source, destination, date);
 
 	}
-
-	@Override
-	public String booking(int userId, int flightId) {
-		return "userId" + userId + "has booked this flight with id" + flightId;
-	}
+// Not Used
+//	@Override
+//	public String booking(int userId) {
+//		return "userId" + userId + "has booked this flight with id" + userRepository.getBookingId(userId);
+//	}
 
 	@Override
 	public ResponseTemplateVo getUserWithBookingId(int userId) {

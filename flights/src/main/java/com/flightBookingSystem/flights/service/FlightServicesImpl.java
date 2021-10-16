@@ -10,11 +10,17 @@ import com.flightBookingSystem.flights.repository.FlightsRepository;
 public class FlightServicesImpl implements FlightServicesInterface {
 
 	@Autowired
-	FlightsRepository flightsRepository;
+	private FlightsRepository flightsRepository;
 
 	@Override
 	public FlightsData findFlightById(int flightId) {
-		return flightsRepository.findFlightById(flightId);
+		FlightsData flight = flightsRepository.findFlightById(flightId);
+		if (flight != null) {
+			return flightsRepository.findFlightById(flightId);
+		} else {
+			System.out.println("There is no Flight for this flightId");
+			return null;
+		}
 	}
 
 }
